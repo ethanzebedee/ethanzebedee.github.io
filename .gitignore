@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Editor directories and files
+.vscode/
+.idea/
+WARP.md
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.log
+*.tmp
