@@ -153,11 +153,11 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 - Add Resume pdf to desktop
 - Dynamically organise desktop app icons
 - Add achievements app
+- Add certifications app
 - Add readme with description of project on desktop
 - Add file explorer
 - Add terminal with commands
 - Add Notes app
-- Add more detailed notes app
 - Add MSPaint
 - Add Download resume function within about me
 - Add Clippy
