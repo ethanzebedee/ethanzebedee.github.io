@@ -321,6 +321,526 @@
     transition: opacity 0.2s ease;
 }
 
+.game-launch-btn--active {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.game-launch-btn--active:hover {
+    opacity: 0.9;
+}
+
+/* Snake game */
+.snake-panel {
+    margin-top: 32px;
+}
+
+.snake-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.snake-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.snake-score {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.snake-restart-btn {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.snake-restart-btn:hover {
+    background: var(--primary-color);
+}
+
+.snake-grid {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: var(--snake-cols, 20) / var(--snake-rows, 15);
+    background: #020617;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    display: grid;
+    grid-template-columns: repeat(var(--snake-cols, 20), 1fr);
+    grid-template-rows: repeat(var(--snake-rows, 15), 1fr);
+    gap: 1px;
+    margin: 0 auto;
+}
+
+.snake-cell {
+    background: #0f172a;
+}
+
+.snake-cell.snake {
+    background: #22c55e;
+}
+
+.snake-cell.snake-head {
+    background: #16a34a;
+}
+
+.snake-cell.food {
+    background: #f97316;
+}
+
+/* Minesweeper */
+.minesweeper-container {
+    max-width: 500px;
+}
+
+.minesweeper-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.minesweeper-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.minesweeper-counter {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.minesweeper-reset-btn {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.minesweeper-reset-btn:hover {
+    background: var(--primary-color);
+}
+
+.minesweeper-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    background: #020617;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+}
+
+.minesweeper-cell {
+    width: 28px;
+    height: 28px;
+    background: #0f172a;
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.minesweeper-cell.revealed {
+    background: #1e293b;
+    cursor: default;
+}
+
+.minesweeper-cell.mine {
+    background: #7f1d1d;
+}
+
+.minesweeper-cell.flagged::after {
+    content: "🚩";
+}
+
+/* Tetris */
+.tetris-container {
+    max-width: 600px;
+}
+
+.tetris-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.tetris-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.tetris-score {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.tetris-reset-btn {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tetris-reset-btn:hover {
+    background: var(--primary-color);
+}
+
+.tetris-main {
+    display: flex;
+    gap: 16px;
+}
+
+.tetris-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1px;
+    background: #020617;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+    flex: 1;
+}
+
+.tetris-cell {
+    width: 24px;
+    height: 24px;
+    background: #0f172a;
+}
+
+.tetris-cell.filled-I { background: #22c55e; }
+.tetris-cell.filled-O { background: #eab308; }
+.tetris-cell.filled-T { background: #a855f7; }
+.tetris-cell.filled-S { background: #22c55e; }
+.tetris-cell.filled-Z { background: #f97316; }
+.tetris-cell.filled-J { background: #3b82f6; }
+.tetris-cell.filled-L { background: #facc15; }
+
+.tetris-next {
+    width: 120px;
+}
+
+.tetris-next-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: #020617;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+    margin-top: 8px;
+}
+
+/* Pong */
+.pong-container {
+    max-width: 520px;
+}
+
+.pong-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.pong-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.pong-score {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.pong-reset-btn {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pong-reset-btn:hover {
+    background: var(--primary-color);
+}
+
+.pong-canvas {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    background: #020617;
+}
+
+/* Doom */
+.doom-frame-wrapper {
+    margin-top: 16px;
+}
+
+.doom-frame {
+    width: 100%;
+    min-height: 360px;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+}
+
+/* Chess */
+.chess-container {
+    max-width: 400px;
+}
+
+.chess-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.chess-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.chess-reset-btn {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chess-reset-btn:hover {
+    background: var(--primary-color);
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    border: 2px solid #1f2937;
+}
+
+.chess-square {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.chess-square.dark {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+.chess-square.light {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.chess-square.selected {
+    outline: 2px solid #22c55e;
+}
+
+/* Sudoku */
+.sudoku-container {
+    max-width: 420px;
+}
+
+.sudoku-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.sudoku-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.sudoku-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.sudoku-actions button {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sudoku-actions button:hover {
+    background: var(--primary-color);
+}
+
+.sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    border: 2px solid #1f2937;
+}
+
+.sudoku-cell {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #1f2937;
+    text-align: center;
+    font-size: 1rem;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+.sudoku-cell.readonly {
+    background: #1f2937;
+    font-weight: 600;
+}
+
+/* Wordle */
+.wordle-container {
+    max-width: 420px;
+}
+
+.wordle-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.wordle-status {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.wordle-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.wordle-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+}
+
+.wordle-tile {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: 1px solid #1f2937;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.wordle-tile.state-empty {
+    background: #020617;
+    color: #e5e7eb;
+}
+
+.wordle-tile.state-correct {
+    background: #16a34a;
+    color: #ecfeff;
+}
+
+.wordle-tile.state-present {
+    background: #eab308;
+    color: #111827;
+}
+
+.wordle-tile.state-absent {
+    background: #1f2937;
+    color: #9ca3af;
+}
+
+.wordle-input {
+    display: flex;
+    gap: 8px;
+}
+
+.wordle-guess-input {
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #1f2937;
+    background: #020617;
+    color: #e5e7eb;
+}
+
+.wordle-guess-btn {
+    padding: 6px 12px;
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.wordle-guess-btn:hover {
+    background: var(--primary-color);
+}
+
 /* Settings Container */
 .settings-container {
     max-width: 600px;

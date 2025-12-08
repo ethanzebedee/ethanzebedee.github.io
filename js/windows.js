@@ -2,6 +2,14 @@ import { state } from "./state.js";
 import { appConfigs } from "./apps/index.js";
 import { addToTaskbar, removeFromTaskbar, updateTaskbarActive } from "./taskbar.js";
 import { setupSettingsWindow } from "./settingsWindow.js";
+import { setupGamesWindow } from "./gamesWindow.js";
+import { setupSnakeGameWindow } from "./games/snake.js";
+import { setupMinesweeperGameWindow } from "./games/minesweeper.js";
+import { setupTetrisGameWindow } from "./games/tetris.js";
+import { setupPongGameWindow } from "./games/pong.js";
+import { setupChessGameWindow } from "./games/chess.js";
+import { setupSudokuGameWindow } from "./games/sudoku.js";
+import { setupWordleGameWindow } from "./games/wordle.js";
 
 let currentThemeLabelEl = null;
 let themeIconEl = null;
@@ -89,6 +97,34 @@ export function openWindow(appName) {
         }),
       50
     );
+  }
+
+  // Setup games hub window (launches individual game windows)
+  if (appName === "games") {
+    setTimeout(() => setupGamesWindow(windowElement), 50);
+  }
+
+  // Setup individual game windows
+  if (appName === "snake-game") {
+    setTimeout(() => setupSnakeGameWindow(windowElement), 50);
+  }
+  if (appName === "minesweeper-game") {
+    setTimeout(() => setupMinesweeperGameWindow(windowElement), 50);
+  }
+  if (appName === "tetris-game") {
+    setTimeout(() => setupTetrisGameWindow(windowElement), 50);
+  }
+  if (appName === "pong-game") {
+    setTimeout(() => setupPongGameWindow(windowElement), 50);
+  }
+  if (appName === "chess-game") {
+    setTimeout(() => setupChessGameWindow(windowElement), 50);
+  }
+  if (appName === "sudoku-game") {
+    setTimeout(() => setupSudokuGameWindow(windowElement), 50);
+  }
+  if (appName === "wordle-game") {
+    setTimeout(() => setupWordleGameWindow(windowElement), 50);
   }
 }
 

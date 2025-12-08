@@ -144,7 +144,7 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 
 - Algorithm visualiser app for sorting/search/pathfinding
 - Promises / async‑await visualiser
-- Richer games (Snake, Tetris, Minesweeper, Pong)
+- Richer games (Snake, Tetris, Minesweeper, Pong, Chess, Doom, Sudoku, Wordle)
 - Notes app and simple file explorer simulated on the client
 - More detailed achievements / experience app
 - Optional sound effects and background music
@@ -153,7 +153,6 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 - Add Resume pdf to desktop
 - Dynamically organise desktop app icons
 - Add achievements app
-- Add various games
 - Add readme with description of project on desktop
 - Add file explorer
 - Add terminal with commands

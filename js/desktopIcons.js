@@ -1,9 +1,57 @@
+// Desktop icon layout helper
+function layoutDesktopIcons() {
+  const container = document.querySelector(".desktop-icons");
+  const desktop = document.querySelector(".desktop");
+  const icons = Array.from(document.querySelectorAll(".desktop-icon"));
+
+  if (!container || !desktop || icons.length === 0) return;
+
+  const desktopRect = desktop.getBoundingClientRect();
+  const taskbar = document.querySelector(".taskbar");
+  const taskbarHeight = taskbar
+    ? taskbar.getBoundingClientRect().height
+    : 48; // fallback
+
+  const paddingTop = 20;
+  const paddingLeft = 20;
+  const paddingBottom = 20;
+  const verticalSpacing = 16;
+  const horizontalSpacing = 40;
+
+  const maxHeight =
+    desktopRect.height - taskbarHeight - paddingTop - paddingBottom;
+
+  const sampleIcon = icons[0];
+  const iconHeight = sampleIcon.offsetHeight || 72;
+  const iconWidth = sampleIcon.offsetWidth || 72;
+
+  const iconsPerColumn = Math.max(
+    1,
+    Math.floor((maxHeight + verticalSpacing) / (iconHeight + verticalSpacing))
+  );
+
+  icons.forEach((icon, index) => {
+    const column = Math.floor(index / iconsPerColumn);
+    const row = index % iconsPerColumn;
+
+    const top = paddingTop + row * (iconHeight + verticalSpacing);
+    const left = paddingLeft + column * (iconWidth + horizontalSpacing);
+
+    icon.style.position = "absolute";
+    icon.style.top = `${top}px`;
+    icon.style.left = `${left}px`;
+  });
+}
+
 // Desktop icon click and drag handlers
 // onOpenApp: function(appName: string) => void
 export function setupDesktopIcons({ onOpenApp }) {
   console.log("setupDesktopIcons called");
   const icons = document.querySelectorAll(".desktop-icon");
   console.log("Found", icons.length, "desktop icons");
+
+  // Initial auto-layout so icons don't overlap the taskbar
+  layoutDesktopIcons();
 
   icons.forEach((icon, index) => {
     console.log(`Setting up icon ${index}:`, icon.dataset.app);

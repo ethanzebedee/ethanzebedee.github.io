@@ -167,6 +167,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialise window manager with shared UI references
   initWindowManager({ currentThemeLabel, themeIcon });
 
+  // Allow any module to request opening an app via a custom event
+  window.addEventListener("open-app", (event) => {
+    const detail = event.detail;
+    const appName = typeof detail === "string" ? detail : detail?.appId;
+    if (appName) {
+      openWindow(appName);
+    }
+  });
+
   setupStartMenu();
   setupThemeSwitcher();
   setupDayNightToggle();
