@@ -43,10 +43,10 @@ Edit the CSS variables in `styles.css`:
 
 ```css
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --text-color: #1f2937;
-    --text-light: #6b7280;
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
 }
 ```
 
@@ -69,6 +69,27 @@ Edit the CSS variables in `styles.css`:
 - Animated project cards
 - Clean, modern UI
 - No build process required
+
+## 🚧 TO DO:
+
+- Algorithm Visualiser App
+- Visualise promises and async await within Visualiser app
+- Add Resume pdf to desktop
+- Dynamically organise desktop app icons
+- Add achievements app
+- Add various games
+- Add sound
+- Add readme with description of project on desktop
+- Add file explorer
+- Add terminal with commands
+- Add Notes app
+- Add more detailed notes app
+- Add MSPaint
+- Add email functionality if possible within Github Pages
+- Add Download resume function within about me
+- Add Clippy
+- Add video player function
+- Add a browser?
 
 ## 🛠️ Built With
 

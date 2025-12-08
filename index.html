@@ -8,81 +8,410 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <h1 class="logo">Ethan Hammond</h1>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Boot Screen - Shows on initial load -->
+    <div id="boot-screen" class="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo">EH</div>
+            <h1 class="boot-title">EthanOS</h1>
+            <div class="boot-loader">
+                <div class="boot-bar"></div>
+            </div>
+            <p class="boot-text">Loading portfolio...</p>
         </div>
-    </nav>
+    </div>
 
-    <section id="hero" class="hero">
-        <div class="container">
-            <h1 class="hero-title">Hi, I'm Ethan</h1>
-            <p class="hero-subtitle">Developer & Creator</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+    <!-- Desktop Environment -->
+    <div id="desktop" class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="about">
+                <div class="icon-image">👤</div>
+                <span class="icon-label">About Me</span>
+            </div>
+            <div class="desktop-icon" data-app="projects">
+                <div class="icon-image">💼</div>
+                <span class="icon-label">Projects</span>
+            </div>
+            <div class="desktop-icon" data-app="skills">
+                <div class="icon-image">⚡</div>
+                <span class="icon-label">Skills</span>
+            </div>
+            <div class = "desktop-icon" data-app="visualiser">
+                <div class="icon-image">📊</div>
+                <span class="icon-label">Algorithm Visualiser</span>
+            </div>
+            <div class="desktop-icon" data-app="contact">
+                <div class="icon-image">✉️</div>
+                <span class="icon-label">Contact</span>
+            </div>
+            <div class="desktop-icon" data-app="games">
+                <div class="icon-image">🎮</div>
+                <span class="icon-label">Games</span>
+            </div>
+            <div class="desktop-icon" data-app="settings">
+                <div class="icon-image">⚙️</div>
+                <span class="icon-label">Settings</span>
+            </div>
         </div>
-    </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm a passionate developer focused on building meaningful projects. This is where you can share your background, skills, and what drives you.</p>
+        <!-- Windows Container -->
+        <div id="windows-container" class="windows-container"></div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-left">
+                <div class="start-button" id="start-button">
+                    <span>🌟 EthanOS</span>
+                </div>
+            </div>
+            <div class="taskbar-center">
+                <div id="taskbar-apps" class="taskbar-apps"></div>
+            </div>
+            <div class="taskbar-right">
+                <button id="theme-toggle" class="taskbar-icon" title="Toggle Day/Night">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <div id="taskbar-time" class="taskbar-time"></div>
+            </div>
         </div>
-    </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
+        <!-- Start Menu -->
+        <div id="start-menu" class="start-menu hidden">
+            <div class="start-menu-header">
+                <div class="start-menu-user">
+                    <div class="user-avatar">EH</div>
+                    <span>Ethan Hammond</span>
+                </div>
+            </div>
+            <div class="start-menu-apps">
+                <div class="start-menu-item" data-app="about">
+                    <span class="start-menu-icon">👤</span>
+                    <span>About Me</span>
+                </div>
+                <div class="start-menu-item" data-app="projects">
+                    <span class="start-menu-icon">💼</span>
+                    <span>Projects</span>
+                </div>
+                <div class="start-menu-item" data-app="skills">
+                    <span class="start-menu-icon">⚡</span>
+                    <span>Skills</span>
+                </div>
+                <div class="start-menu-item" data-app="contact">
+                    <span class="start-menu-icon">✉️</span>
+                    <span>Contact</span>
+                </div>
+                <div class="start-menu-item" data-app="games">
+                    <span class="start-menu-icon">🎮</span>
+                    <span>Games</span>
+                </div>
+                <div class="start-menu-item" data-app="settings">
+                    <span class="start-menu-icon">⚙️</span>
+                    <span>Settings</span>
+                </div>
+            </div>
+            <div class="start-menu-footer">
+                <div class="start-menu-item" id="theme-switcher">
+                    <span class="start-menu-icon">🎨</span>
+                    <span>Theme: <strong id="current-theme">Modern</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Window Templates (Hidden) -->
+    <template id="window-template">
+        <div class="window" data-app="">
+            <div class="window-titlebar">
+                <div class="window-title"></div>
+                <div class="window-controls">
+                    <button class="window-btn minimize-btn" title="Minimize">−</button>
+                    <button class="window-btn maximize-btn" title="Maximize">□</button>
+                    <button class="window-btn close-btn" title="Close">×</button>
+                </div>
+            </div>
+            <div class="window-content"></div>
+        </div>
+    </template>
+
+    <!-- App Content Templates -->
+    <template id="about-content">
+        <div class="terminal">
+            <div class="terminal-header">ethan@portfolio:~$</div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">cat about.txt</span>
+                </div>
+                <div class="terminal-output">
+                    <p><strong>Name:</strong> Ethan Hammond</p>
+                    <p><strong>Role:</strong> Developer & Creator</p>
+                    <p><strong>Bio:</strong> I'm a passionate developer focused on building meaningful projects. I love exploring new technologies and creating solutions that make a difference.</p>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">ls skills/</span>
+                </div>
+                <div class="terminal-output">
+                    <p>JavaScript • Python • HTML/CSS • React • Node.js</p>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-cursor">_</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="projects-content">
+        <div class="projects-grid">
+            <div class="project-item">
+                <div class="project-header">
                     <h3>Project One</h3>
-                    <p>Description of your first project. What problem does it solve?</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Demo</a>
-                        <a href="#" class="project-link">GitHub</a>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
                     </div>
                 </div>
-                <div class="project-card">
+                <p class="project-description">Description of your first project. What problem does it solve?</p>
+                <div class="project-links">
+                    <a href="#" class="project-link" target="_blank">🔗 Demo</a>
+                    <a href="#" class="project-link" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
                     <h3>Project Two</h3>
-                    <p>Description of your second project. What technologies did you use?</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Demo</a>
-                        <a href="#" class="project-link">GitHub</a>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">API</span>
                     </div>
                 </div>
-                <div class="project-card">
+                <p class="project-description">Description of your second project. What technologies did you use?</p>
+                <div class="project-links">
+                    <a href="#" class="project-link" target="_blank">🔗 Demo</a>
+                    <a href="#" class="project-link" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
                     <h3>Project Three</h3>
-                    <p>Description of your third project. What did you learn?</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Demo</a>
-                        <a href="#" class="project-link">GitHub</a>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                </div>
+                <p class="project-description">Description of your third project. What did you learn?</p>
+                <div class="project-links">
+                    <a href="#" class="project-link" target="_blank">🔗 Demo</a>
+                    <a href="#" class="project-link" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="skills-content">
+        <div class="skills-container">
+            <h3>Technical Skills</h3>
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <div class="skill-bars">
+                    <div class="skill-bar">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="skill-level" data-level="90"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-name">Python</span>
+                        <div class="skill-level" data-level="85"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-name">HTML/CSS</span>
+                        <div class="skill-level" data-level="95"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>Frameworks & Tools</h4>
+                <div class="skill-bars">
+                    <div class="skill-bar">
+                        <span class="skill-name">React</span>
+                        <div class="skill-level" data-level="80"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-name">Node.js</span>
+                        <div class="skill-level" data-level="75"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-name">Git</span>
+                        <div class="skill-level" data-level="85"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </template>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Feel free to reach out if you'd like to connect or collaborate.</p>
-            <div class="contact-links">
-                <a href="https://github.com/ethanzebedee" target="_blank" class="contact-link">GitHub</a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">LinkedIn</a>
-                <a href="mailto:your.email@example.com" class="contact-link">Email</a>
+    <template id="visualiser-content">
+        <div class="visualiser-container">
+            <h3>Algorithm Visualiser</h3>
+            <div class="visualiser-category">
+                <h4>Languages</h4>
+                <div class="visualiser-bars">
+                    <div class="visualiser-bar">
+                        <span class="visualiser-name">JavaScript</span>
+                        <div class="visualiser-level" data-level="90"></div>
+                    </div>
+                    <div class="visualiser-bar">
+                        <span class="visualiser-name">Python</span>
+                        <div class="visualiser-level" data-level="85"></div>
+                    </div>
+                    <div class="visualiser-bar">
+                        <span class="visualiser-name">HTML/CSS</span>
+                        <div class="visualiser-level" data-level="95"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="visualiser-category">
+                <h4>Frameworks & Tools</h4>
+                <div class="visualiser-bars">
+                    <div class="visualiser-bar">
+                        <span class="visualiser-name">React</span>
+                        <div class="visualiser-level" data-level="80"></div>
+                    </div>
+                    <div class="visualiser-bar">
+                        <span class="visualiser-name">Node.js</span>
+                        <div class="visualiser-level" data-level="75"></div>
+                    </div>
+                    <div class="visualiser-bar">
+                        <span class="visualiser-name">Git</span>
+                        <div class="visualiser-level" data-level="85"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </template>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Ethan Hammond. All rights reserved.</p>
+    <template id="contact-content">
+        <div class="contact-container">
+            <div class="contact-intro">
+                <h3>Let's Connect</h3>
+                <p>Feel free to reach out if you'd like to collaborate or just chat about tech!</p>
+            </div>
+            <div class="contact-methods">
+                <a href="https://github.com/ethanzebedee" target="_blank" class="contact-card">
+                    <div class="contact-icon">📁</div>
+                    <div class="contact-info">
+                        <h4>GitHub</h4>
+                        <p>@ethanzebedee</p>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-info">
+                        <h4>LinkedIn</h4>
+                        <p>Connect with me</p>
+                    </div>
+                </a>
+                <a href="mailto:your.email@example.com" class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-info">
+                        <h4>Email</h4>
+                        <p>your.email@example.com</p>
+                    </div>
+                </a>
+            </div>
         </div>
-    </footer>
+    </template>
+
+    <template id="games-content">
+        <div class="games-container">
+            <div class="games-header">
+                <h3>🎮 Games</h3>
+                <p>Classic games to play while you explore my portfolio</p>
+            </div>
+            <div class="games-grid">
+                <div class="game-card" data-game="minesweeper">
+                    <div class="game-icon">💣</div>
+                    <h4>Minesweeper</h4>
+                    <p>Classic puzzle game</p>
+                    <button class="game-launch-btn">Coming Soon</button>
+                </div>
+                <div class="game-card" data-game="snake">
+                    <div class="game-icon">🐍</div>
+                    <h4>Snake</h4>
+                    <p>Classic arcade game</p>
+                    <button class="game-launch-btn">Coming Soon</button>
+                </div>
+                <div class="game-card" data-game="tetris">
+                    <div class="game-icon">🧱</div>
+                    <h4>Tetris</h4>
+                    <p>Falling blocks puzzle</p>
+                    <button class="game-launch-btn">Coming Soon</button>
+                </div>
+                <div class="game-card" data-game="pong">
+                    <div class="game-icon">🏓</div>
+                    <h4>Pong</h4>
+                    <p>Classic table tennis</p>
+                    <button class="game-launch-btn">Coming Soon</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="settings-content">
+        <div class="settings-container">
+            <h3>⚙️ Settings</h3>
+            
+            <div class="setting-section">
+                <h4>Appearance</h4>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <span>🎨 Theme</span>
+                        <p class="setting-description">Switch between modern and retro styles</p>
+                    </div>
+                    <button id="settings-theme-toggle" class="setting-btn">
+                        <span id="settings-theme-label">Modern</span>
+                    </button>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <span>🌓 Day/Night Mode</span>
+                        <p class="setting-description">Toggle between day and night theme</p>
+                    </div>
+                    <button id="settings-daynight-toggle" class="setting-btn">
+                        <span id="settings-daynight-label">Night</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="setting-section">
+                <h4>Desktop</h4>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <span>🖼️ Background</span>
+                        <p class="setting-description">Choose your desktop background</p>
+                    </div>
+                </div>
+                <div class="background-picker">
+                    <div class="background-option" data-bg="gradient-blue" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%)"></div>
+                    <div class="background-option" data-bg="gradient-purple" style="background: linear-gradient(135deg, #581c87 0%, #3b0764 100%)"></div>
+                    <div class="background-option" data-bg="gradient-green" style="background: linear-gradient(135deg, #065f46 0%, #064e3b 100%)"></div>
+                    <div class="background-option" data-bg="gradient-orange" style="background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%)"></div>
+                    <div class="background-option" data-bg="gradient-pink" style="background: linear-gradient(135deg, #db2777 0%, #9f1239 100%)"></div>
+                    <div class="background-option" data-bg="solid-navy" style="background: #1e3a8a"></div>
+                    <div class="background-option" data-bg="solid-forest" style="background: #14532d"></div>
+                    <div class="background-option" data-bg="solid-midnight" style="background: #1e1b4b"></div>
+                </div>
+            </div>
+
+            <div class="setting-section">
+                <h4>About</h4>
+                <div class="setting-info">
+                    <p><strong>EthanOS</strong> Version 1.0.0</p>
+                    <p>Built with vanilla HTML, CSS, and JavaScript</p>
+                    <p>© 2024 Ethan Hammond</p>
+                </div>
+            </div>
+        </div>
+    </template>
 
     <script src="script.js"></script>
 </body>
