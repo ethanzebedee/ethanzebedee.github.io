@@ -12,6 +12,7 @@ This is a static site that requires **no build process**. You can open it direct
 
 1. Clone the repository
 2. From the project root, either:
+
    - Open `index.html` directly in your browser, **or**
    - Run a local server:
 
@@ -149,6 +150,20 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 - Optional sound effects and background music
 - Download‑resume button wired to the PDF
 - In‑window README / help viewer for explaining the OS
+- Add Resume pdf to desktop
+- Dynamically organise desktop app icons
+- Add achievements app
+- Add various games
+- Add readme with description of project on desktop
+- Add file explorer
+- Add terminal with commands
+- Add Notes app
+- Add more detailed notes app
+- Add MSPaint
+- Add Download resume function within about me
+- Add Clippy
+- Add video player function
+- Add a browser?
 
 ---
 
@@ -157,10 +172,12 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 A quick guide to the most relevant parts of this portfolio:
 
 - **Experience & Impact**
+
   - Open the **About Me** icon or app to see a short summary of my role as an Associate Software Engineer at Optum.
   - Open the **Skills** and **Experience Visualiser** apps to see my core stack (React, TypeScript, C#/.NET, SQL, Python) and areas of focus.
 
 - **Projects / Code Samples**
+
   - Open the **Projects** app (desktop icon or via the Start menu) for a curated list of projects.
   - Each project card links directly to the **GitHub repo** and **README** with implementation details and context.
 
