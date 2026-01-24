@@ -144,7 +144,7 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 
 - Algorithm visualiser app for sorting/search/pathfinding
 - Promises / async‑await visualiser
-- Richer games (Snake, Tetris, Minesweeper, Pong, Chess, Doom, Sudoku, Wordle)
+- Richer games (Snake, Minesweeper, Pong, Chess, Sudoku, Wordle)
 - Notes app and simple file explorer simulated on the client
 - More detailed achievements / experience app
 - Optional sound effects and background music

@@ -71,7 +71,9 @@ function indexFromPos(game, x, y) {
 function placeFood(game) {
   const { rows, cols, snake } = game;
   const total = rows * cols;
-  const occupied = new Set(snake.map((seg) => indexFromPos(game, seg.x, seg.y)));
+  const occupied = new Set(
+    snake.map((seg) => indexFromPos(game, seg.x, seg.y))
+  );
 
   let idx = null;
   const maxAttempts = 1000;
@@ -239,7 +241,9 @@ export function setupGamesWindow(windowElement) {
 
   // Helper to wire a game card to open a specific app id
   function wireGameLauncher(gameId) {
-    const card = gamesContainer.querySelector(`.game-card[data-game="${gameId}"]`);
+    const card = gamesContainer.querySelector(
+      `.game-card[data-game="${gameId}"]`
+    );
     if (!card) return;
 
     const button = card.querySelector(".game-launch-btn");
@@ -256,7 +260,7 @@ export function setupGamesWindow(windowElement) {
     });
   }
 
-  ["minesweeper", "snake", "tetris", "pong", "doom", "chess", "sudoku", "wordle"].forEach((id) =>
+  ["minesweeper", "snake", "pong", "chess", "sudoku", "wordle"].forEach((id) =>
     wireGameLauncher(id)
   );
 }

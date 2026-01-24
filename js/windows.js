@@ -1,11 +1,14 @@
 import { state } from "./state.js";
 import { appConfigs } from "./apps/index.js";
-import { addToTaskbar, removeFromTaskbar, updateTaskbarActive } from "./taskbar.js";
+import {
+  addToTaskbar,
+  removeFromTaskbar,
+  updateTaskbarActive,
+} from "./taskbar.js";
 import { setupSettingsWindow } from "./settingsWindow.js";
 import { setupGamesWindow } from "./gamesWindow.js";
 import { setupSnakeGameWindow } from "./games/snake.js";
 import { setupMinesweeperGameWindow } from "./games/minesweeper.js";
-import { setupTetrisGameWindow } from "./games/tetris.js";
 import { setupPongGameWindow } from "./games/pong.js";
 import { setupChessGameWindow } from "./games/chess.js";
 import { setupSudokuGameWindow } from "./games/sudoku.js";
@@ -110,9 +113,6 @@ export function openWindow(appName) {
   }
   if (appName === "minesweeper-game") {
     setTimeout(() => setupMinesweeperGameWindow(windowElement), 50);
-  }
-  if (appName === "tetris-game") {
-    setTimeout(() => setupTetrisGameWindow(windowElement), 50);
   }
   if (appName === "pong-game") {
     setTimeout(() => setupPongGameWindow(windowElement), 50);

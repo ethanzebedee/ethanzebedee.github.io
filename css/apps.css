@@ -478,91 +478,6 @@
     content: "🚩";
 }
 
-/* Tetris */
-.tetris-container {
-    max-width: 600px;
-}
-
-.tetris-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-}
-
-.tetris-status {
-    font-size: 0.875rem;
-    color: var(--text-light);
-}
-
-.tetris-score {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-.tetris-reset-btn {
-    padding: 6px 12px;
-    background: var(--secondary-color);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.tetris-reset-btn:hover {
-    background: var(--primary-color);
-}
-
-.tetris-main {
-    display: flex;
-    gap: 16px;
-}
-
-.tetris-grid {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 1px;
-    background: #020617;
-    padding: 4px;
-    border-radius: 6px;
-    border: 1px solid #1e293b;
-    flex: 1;
-}
-
-.tetris-cell {
-    width: 24px;
-    height: 24px;
-    background: #0f172a;
-}
-
-.tetris-cell.filled-I { background: #22c55e; }
-.tetris-cell.filled-O { background: #eab308; }
-.tetris-cell.filled-T { background: #a855f7; }
-.tetris-cell.filled-S { background: #22c55e; }
-.tetris-cell.filled-Z { background: #f97316; }
-.tetris-cell.filled-J { background: #3b82f6; }
-.tetris-cell.filled-L { background: #facc15; }
-
-.tetris-next {
-    width: 120px;
-}
-
-.tetris-next-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    background: #020617;
-    padding: 4px;
-    border-radius: 6px;
-    border: 1px solid #1e293b;
-    margin-top: 8px;
-}
-
 /* Pong */
 .pong-container {
     max-width: 520px;
@@ -609,18 +524,6 @@
     border-radius: 8px;
     border: 1px solid #1e293b;
     background: #020617;
-}
-
-/* Doom */
-.doom-frame-wrapper {
-    margin-top: 16px;
-}
-
-.doom-frame {
-    width: 100%;
-    min-height: 360px;
-    border: 1px solid #1e293b;
-    border-radius: 8px;
 }
 
 /* Chess */

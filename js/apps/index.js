@@ -7,9 +7,7 @@ import { gamesApp } from "./games.js";
 import { settingsApp } from "./settings.js";
 import { snakeGameApp } from "./snakeGame.js";
 import { minesweeperGameApp } from "./minesweeperGame.js";
-import { tetrisGameApp } from "./tetrisGame.js";
 import { pongGameApp } from "./pongGame.js";
-import { doomGameApp } from "./doomGame.js";
 import { chessGameApp } from "./chessGame.js";
 import { sudokuGameApp } from "./sudokuGame.js";
 import { wordleGameApp } from "./wordleGame.js";
@@ -23,9 +21,7 @@ const apps = [
   gamesApp,
   snakeGameApp,
   minesweeperGameApp,
-  tetrisGameApp,
   pongGameApp,
-  doomGameApp,
   chessGameApp,
   sudokuGameApp,
   wordleGameApp,

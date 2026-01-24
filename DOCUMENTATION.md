@@ -24,7 +24,7 @@
 - **Taskbar**: Shows running apps, live clock, and theme toggles
 - **Start Menu**: Quick launcher for all applications
 - **Multiple Apps**: About, Projects, Skills, Experience Visualiser, Contact, Games hub, and Settings
-- **8 Playable Games**: Snake, Minesweeper, Tetris, Pong, Chess, Doom, Sudoku, Wordle
+- **8 Playable Games**: Snake, Minesweeper, Pong, Chess, Sudoku, Wordle
 - **Theme System**: Modern/Windows 95 themes + Day/Night mode
 - **Customizable Backgrounds**: 8 different background options
 - **Keyboard Shortcuts**: Alt+1-4 for quick app launch, Ctrl+W to close, etc.
@@ -97,16 +97,13 @@
 │   │   ├── settings.js            # Settings app config
 │   │   ├── snakeGame.js           # Snake game config
 │   │   ├── minesweeperGame.js     # Minesweeper game config
-│   │   ├── tetrisGame.js          # Tetris game config
 │   │   ├── pongGame.js            # Pong game config
 │   │   ├── chessGame.js           # Chess game config
-│   │   ├── doomGame.js            # Doom game config
 │   │   ├── sudokuGame.js          # Sudoku game config
 │   │   └── wordleGame.js          # Wordle game config
 │   └── games/
 │       ├── snake.js               # Snake game logic
 │       ├── minesweeper.js         # Minesweeper game logic
-│       ├── tetris.js              # Tetris game logic
 │       ├── pong.js                # Pong game logic (Canvas-based)
 │       ├── chess.js               # Chess game logic
 │       ├── sudoku.js              # Sudoku puzzle generator & solver
@@ -400,39 +397,27 @@ All games follow a consistent pattern:
 - **Logic**: Recursive flood-fill for blank cells, win/lose detection
 - **Counter**: Shows remaining mines
 
-#### 3. Tetris (`js/games/tetris.js`)
-- **Grid**: 20 rows × 10 columns
-- **Controls**: Arrow keys + Space to drop
-- **Logic**: Piece rotation, line clearing, gravity
-- **Preview**: Shows next piece
-- **Score**: Points for lines cleared
-
-#### 4. Pong (`js/games/pong.js`)
+#### 3. Pong (`js/games/pong.js`)
 - **Canvas-based**: 480×300 pixel canvas
 - **Controls**: W/S or ↑/↓ for player paddle
 - **AI**: Computer-controlled opponent
 - **Physics**: Ball bouncing, collision detection
 - **Score**: First to X points (no limit set)
 
-#### 5. Chess (`js/games/chess.js`)
+#### 4. Chess (`js/games/chess.js`)
 - **Board**: 8×8 with standard chess layout
 - **Moves**: Click piece, then destination
 - **Validation**: Implements chess movement rules
 - **Turn-based**: Alternates white/black
 - **No AI**: Two-player only
 
-#### 6. Doom (`js/apps/doomGame.js`)
-- **Embedded iframe**: Links to external Doom portfolio (0xj0ey.github.io)
-- **Loading**: Uses `loading="lazy"` for performance
-- **Note**: Not a local implementation
-
-#### 7. Sudoku (`js/games/sudoku.js`)
+#### 5. Sudoku (`js/games/sudoku.js`)
 - **Grid**: 9×9 with input fields
 - **Generator**: Creates solvable puzzles with random difficulty
 - **Auto-Solve**: Button to reveal solution
 - **Validation**: Checks for conflicts as you type
 
-#### 8. Wordle (`js/games/wordle.js`)
+#### 6. Wordle (`js/games/wordle.js`)
 - **Word List**: Loads from `files/wordle.txt`
 - **Grid**: 6 guesses × 5 letters
 - **Input**: Text field + "Guess" button
@@ -909,11 +894,10 @@ Site live at: https://ethanzebedee.github.io
 
 ### Game Performance
 - Canvas-based games (Pong) use `requestAnimationFrame()`
-- DOM-based games (Snake, Tetris) use `setInterval()` with frame limiting
+- DOM-based games (Snake) use `setInterval()` with frame limiting
 - Games pause/cleanup on window close
 
 ### Lazy Loading
-- Doom iframe uses `loading="lazy"`
 - Wordle word list fetched only when game opens
 - Game logic only initializes when window opens
 
