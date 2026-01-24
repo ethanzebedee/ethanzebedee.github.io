@@ -14,6 +14,28 @@ let themeSwitcher;
 let currentThemeLabel;
 let themeToggle;
 let themeIcon;
+let profilePopup;
+let profilePopupClose;
+let profilePopupOverlay;
+
+function setupProfilePopup() {
+  profilePopup = document.getElementById("profile-popup");
+  if (!profilePopup) return;
+
+  profilePopupClose = profilePopup.querySelector(".profile-popup-close");
+  profilePopupOverlay = profilePopup.querySelector(".profile-popup-overlay");
+
+  profilePopupClose.addEventListener("click", closeProfilePopup);
+  profilePopupOverlay.addEventListener("click", closeProfilePopup);
+}
+
+function openProfilePopup() {
+  profilePopup?.classList.remove("hidden");
+}
+
+function closeProfilePopup() {
+  profilePopup?.classList.add("hidden");
+}
 
 // Keyboard shortcuts rely on start menu and window state
 function setupKeyboardShortcuts() {
@@ -64,6 +86,7 @@ function setupKeyboardShortcuts() {
 function setupBootScreen() {
   window.addEventListener("load", () => {
     console.log("Window load event fired");
+
     setTimeout(() => {
       const bootScreen = document.getElementById("boot-screen");
       if (bootScreen) {
@@ -73,6 +96,12 @@ function setupBootScreen() {
         // Remove from DOM after animation
         setTimeout(() => {
           bootScreen.remove();
+
+          // ✅ Show intro popup once
+          if (!localStorage.getItem("introShown")) {
+            openProfilePopup();
+            localStorage.setItem("introShown", "true");
+          }
         }, 500);
       }
     }, 2000);
@@ -157,6 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
   currentThemeLabel = document.getElementById("current-theme");
   themeToggle = document.getElementById("theme-toggle");
   themeIcon = themeToggle.querySelector(".theme-icon");
+
+  setupProfilePopup(); // ✅ ADD THIS
 
   console.log("DOM elements loaded:", {
     startButton: !!startButton,
