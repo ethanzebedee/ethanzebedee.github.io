@@ -147,7 +147,6 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 - Notes app and simple file explorer simulated on the client
 - Optional sound effects and background music
 - In‑window README / help viewer for explaining the OS
-- Add Resume pdf to desktop
 - Add certifications app
 - Add readme with description of project on desktop
 - Add file explorer
