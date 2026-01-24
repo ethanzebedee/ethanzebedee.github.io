@@ -2,7 +2,6 @@ import { aboutApp } from "./about.js";
 import { projectsApp } from "./projects.js";
 import { achievementsApp } from "./achievements.js";
 import { skillsApp } from "./skills.js";
-import { visualiserApp } from "./visualiser.js";
 import { contactApp } from "./contact.js";
 import { gamesApp } from "./games.js";
 import { settingsApp } from "./settings.js";
@@ -22,7 +21,6 @@ const apps = [
   projectsApp,
   achievementsApp,
   skillsApp,
-  visualiserApp,
   contactApp,
   gamesApp,
   snakeGameApp,

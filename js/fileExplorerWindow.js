@@ -106,27 +106,56 @@ export function setupFileExplorerWindow(windowElement) {
     fileViewer.innerHTML = "";
 
     if (file.download) {
+      // Create download link
+      const infoDiv = document.createElement("div");
+      infoDiv.className = "file-info";
+      infoDiv.innerHTML = `<h3>${name}</h3><p>Click the button below to download this file.</p>`;
+      fileViewer.appendChild(infoDiv);
+      
       const link = document.createElement("a");
       link.href = file.path;
       link.download = name;
       link.className = "file-download-btn";
       link.textContent = `⬇️ Download ${name}`;
-      link.click();
-      fileViewer.innerHTML = `<div class="file-info"><h3>${name}</h3><p>File downloaded!</p></div>`;
+      link.style.display = "inline-block";
+      link.style.marginTop = "16px";
+      fileViewer.appendChild(link);
     } else if (file.image) {
+      const infoDiv = document.createElement("div");
+      infoDiv.className = "file-info";
+      infoDiv.innerHTML = `<h3>${name}</h3>`;
+      fileViewer.appendChild(infoDiv);
+      
       const img = document.createElement("img");
       img.src = file.path;
       img.className = "file-image";
       img.alt = name;
-      fileViewer.innerHTML = `<div class="file-info"><h3>${name}</h3></div>`;
       fileViewer.appendChild(img);
     } else if (file.content) {
       const content = document.createElement("div");
       content.className = "file-content";
       content.innerHTML = `<h3>${name}</h3><pre>${escapeHtml(file.content)}</pre>`;
       fileViewer.appendChild(content);
+    } else if (file.path) {
+      // If file has a path but no specific type, try to open it
+      const infoDiv = document.createElement("div");
+      infoDiv.className = "file-info";
+      infoDiv.innerHTML = `<h3>${name}</h3><p>Opening file...</p>`;
+      fileViewer.appendChild(infoDiv);
+      
+      const link = document.createElement("a");
+      link.href = file.path;
+      link.target = "_blank";
+      link.className = "file-download-btn";
+      link.textContent = `🔗 Open ${name}`;
+      link.style.display = "inline-block";
+      link.style.marginTop = "16px";
+      fileViewer.appendChild(link);
     } else {
-      fileViewer.innerHTML = `<div class="file-info"><h3>${name}</h3><p>No preview available</p></div>`;
+      const infoDiv = document.createElement("div");
+      infoDiv.className = "file-info";
+      infoDiv.innerHTML = `<h3>${name}</h3><p>This file cannot be previewed in the browser.</p>`;
+      fileViewer.appendChild(infoDiv);
     }
   }
 

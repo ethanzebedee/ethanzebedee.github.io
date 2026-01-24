@@ -25,11 +25,16 @@
 - **Boot Animation**: Simulated OS boot screen with loading animation
 - **Taskbar**: Shows running apps, live clock, and theme toggles
 - **Start Menu**: Quick launcher for all applications
-- **Multiple Apps**: About, Projects, Skills, Experience Visualiser, Contact, Games hub, and Settings
-- **8 Playable Games**: Snake, Minesweeper, Pong, Chess, Sudoku, Wordle
+- **Clippy Assistant**: Interactive desktop helper with tips and periodic messages
+- **Multiple Apps**: About, Projects, Achievements, Skills, Contact, Games hub, Notes, File Explorer, Algorithm Visualiser, MS Paint, and Settings
+- **6 Playable Games**: Snake, Minesweeper, Pong, Chess, Sudoku, Wordle
+- **Algorithm Visualiser**: Interactive visualization of 30+ algorithms (sorting, searching, pathfinding, and more)
+- **Notes App**: localStorage-based note-taking with auto-save
+- **File Explorer**: Simulated file system for browsing and downloading files
+- **MS Paint**: Canvas-based drawing application
 - **Theme System**: Modern/Windows 95 themes + Day/Night mode
 - **Customizable Backgrounds**: 8 different background options
-- **Keyboard Shortcuts**: Alt+1-4 for quick app launch, Ctrl+W to close, etc.
+- **Keyboard Shortcuts**: Alt+1-5 for quick app launch, Ctrl+W to close, etc.
 
 ### Technology Stack
 
@@ -91,6 +96,11 @@
 │   ├── windows.js                 # Window manager (open/close/minimize/maximize/focus/drag)
 │   ├── desktopIcons.js            # Desktop icon layout, click, and drag handlers
 │   ├── taskbar.js                 # Taskbar app buttons (add/remove/update active)
+│   ├── clippy.js                  # Clippy assistant logic
+│   ├── notesWindow.js             # Notes app logic (localStorage-based)
+│   ├── fileExplorerWindow.js     # File Explorer app logic
+│   ├── algorithmVisualiserWindow.js # Algorithm Visualiser (30+ algorithms)
+│   ├── paintWindow.js             # MS Paint app logic
 │   ├── settingsWindow.js          # Settings window logic (theme, background picker)
 │   ├── gamesWindow.js             # Games hub launcher (grid of game cards)
 │   ├── apps/
@@ -99,9 +109,12 @@
 │   │   ├── projects.js            # Projects app config
 │   │   ├── achievements.js        # Achievements app config
 │   │   ├── skills.js              # Skills app config
-│   │   ├── visualiser.js          # Experience Visualiser app config
 │   │   ├── contact.js             # Contact app config
 │   │   ├── games.js               # Games hub app config
+│   │   ├── notes.js               # Notes app config
+│   │   ├── fileExplorer.js        # File Explorer app config
+│   │   ├── algorithmVisualiser.js # Algorithm Visualiser app config
+│   │   ├── paint.js               # MS Paint app config
 │   │   ├── settings.js            # Settings app config
 │   │   ├── snakeGame.js           # Snake game config
 │   │   ├── minesweeperGame.js     # Minesweeper game config
@@ -369,11 +382,60 @@ export const aboutApp = {
 - **Animation**: Bars animate from 0% to `data-level` value on window open
 - **Categories**: Languages & Core, Frameworks & Tools
 
-### Experience Visualiser Window
+### Notes Window
 
-- **Template**: `visualiser-content`
-- **Similar to Skills**: Different categorization (Frontend, Backend/Data/Cloud)
-- **Purpose**: Alternative view of technical expertise
+- **Template**: `notes-content`
+- **Layout**: List of note cards with title, content, and date
+- **Features**: 
+  - Create, edit, and delete notes
+  - Auto-save to localStorage on every change
+  - Notes persist across page refreshes
+  - Date stamps for each note
+- **Storage**: Uses browser localStorage API
+- **Logic**: Managed by `notesWindow.js`
+
+### File Explorer Window
+
+- **Template**: `file-explorer-content`
+- **Layout**: Split view with file tree on left, file viewer on right
+- **Features**:
+  - Navigate through simulated file system
+  - View images, text files, and download PDFs
+  - Path bar showing current location
+  - Back navigation support
+- **File System**: JSON-based structure defined in `fileExplorerWindow.js`
+- **Logic**: Managed by `fileExplorerWindow.js`
+
+### Algorithm Visualiser Window
+
+- **Template**: `algorithm-visualiser-content`
+- **Layout**: Canvas-based visualization with controls
+- **Features**:
+  - 30+ algorithms organized by category
+  - Play/Pause/Reset controls
+  - Adjustable animation speed
+  - Step-by-step visualization
+- **Categories**:
+  - **Sorting**: Bubble, Insertion, Selection, Merge, Quick Sort
+  - **Search**: Linear, Binary, Jump, Interpolation, Exponential, Stalin Sort
+  - **Pathfinding**: Dijkstra's, A*, Bellman-Ford, Floyd-Warshall, Prim's MST, Kruskal's MST
+  - **Other**: Top K Elements, Backtracking (N-Queens), Sliding Window, Huffman Coding, Euclid's Algorithm, Union Find, Kadane's Algorithm, Floyd's Cycle Detection, KMP Pattern Matching, Quick Select, Boyer-Moore, Maze Generation
+- **Extensibility**: Easy to add custom algorithms (see "Adding New Algorithms" section)
+- **Logic**: Managed by `algorithmVisualiserWindow.js`
+
+### MS Paint Window
+
+- **Template**: `paint-content`
+- **Layout**: Toolbar with controls and canvas
+- **Features**:
+  - Brush and eraser tools
+  - Color picker
+  - Adjustable brush size
+  - Save canvas as PNG
+  - Clear canvas option
+  - Touch support for mobile devices
+- **Technology**: HTML5 Canvas API
+- **Logic**: Managed by `paintWindow.js`
 
 ### Contact Window
 
@@ -398,6 +460,19 @@ export const aboutApp = {
   - About (version info)
 - **Interactivity**: Managed by `settingsWindow.js`
 - **Background Picker**: Clickable color swatches that update desktop
+
+### Clippy Assistant
+
+- **Not a Window**: Floating desktop element
+- **Features**:
+  - Shows helpful tips and messages
+  - Click to show/hide tips
+  - Auto-shows tips periodically
+  - Draggable around desktop
+  - Auto-hides after 5 seconds
+- **Initialization**: Called from `main.js` on DOMContentLoaded
+- **Logic**: Managed by `clippy.js`
+- **Styling**: Defined in `css/base.css`
 
 ---
 
@@ -999,25 +1074,88 @@ Site live at: https://ethanzebedee.github.io
 
 ---
 
+## Algorithm Visualiser System
+
+The Algorithm Visualiser is one of the most comprehensive features, showcasing 30+ algorithms with interactive visualizations.
+
+### Architecture
+
+The visualiser uses a consistent interface for all algorithms:
+
+```javascript
+{
+  step: () => boolean,    // Returns true when complete
+  reset: () => void,      // Resets to initial state
+  setSpeed: (speed) => void, // Updates animation speed
+  stop: () => void        // Cleanup (optional)
+}
+```
+
+### Adding New Algorithms
+
+To add a custom algorithm:
+
+1. **Add to algorithms registry** in `algorithmVisualiserWindow.js`:
+```javascript
+const algorithms = {
+  // ... existing algorithms
+  "my-algorithm": {
+    name: "My Algorithm",
+    category: "Sorting", // or "Search", "Pathfinding", "Other"
+    setup: () => setupMyAlgorithm(visualiserCanvas),
+  },
+};
+```
+
+2. **Implement setup function**:
+```javascript
+function setupMyAlgorithm(canvas) {
+  const ctx = canvas.getContext("2d");
+  // ... initialization code
+  
+  function step() {
+    // One step of algorithm
+    // Return true when complete, false otherwise
+  }
+  
+  function reset() {
+    // Reset to initial state
+  }
+  
+  function setSpeed(speed) {
+    // Update speed if needed
+  }
+  
+  return { step, reset, setSpeed, stop: () => {} };
+}
+```
+
+3. **The algorithm will automatically appear** in the dropdown organized by category.
+
+### Algorithm Categories
+
+- **Sorting**: Visual array sorting algorithms
+- **Search**: Array searching algorithms
+- **Pathfinding**: Graph traversal and shortest path algorithms
+- **Other**: Miscellaneous algorithms (compression, math, string matching, etc.)
+
+---
+
 ## Future Enhancement Ideas
 
 Potential additions (constrained to static hosting):
 
 ### Applications
 
-- **File Explorer**: Simulated file system with resume, images, READMEs
 - **Terminal**: Interactive command line with custom commands
-- **Notes App**: LocalStorage-based note-taking
-- **MSPaint**: Canvas-based drawing application
 - **Music Player**: Audio file playback
 - **Video Player**: Video playback interface
-- **Browser**: Embedded iframe for web browsing
-- **Achievements**: Unlockable badges for interactions
+- **Browser**: Embedded iframe for web browsing (with limitations)
 - **Certifications**: Display professional certifications
+- **Calendar**: Date and event management
 
 ### Enhancements
 
-- **Clippy**: Animated assistant with tips and jokes
 - **Sound Effects**: Window open/close, clicks, game sounds
 - **Window Snapping**: Snap to edges like Windows 11
 - **Virtual Desktops**: Multiple desktop workspaces
@@ -1025,6 +1163,8 @@ Potential additions (constrained to static hosting):
 - **Icon Auto-Arrange**: Grid snapping for icons
 - **Search**: Start menu search for apps
 - **Widget Bar**: Sidebar with widgets (weather, calendar, etc.)
+- **More Algorithms**: Additional algorithm visualizations
+- **Algorithm Comparison**: Side-by-side algorithm performance comparison
 
 ---
 
@@ -1068,4 +1208,4 @@ Potential additions (constrained to static hosting):
 ---
 
 **Last Updated**: January 2025  
-**Version**: 1.0.0
+**Version**: 2.0.0
