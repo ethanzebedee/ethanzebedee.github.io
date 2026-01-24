@@ -39,41 +39,22 @@
                 I build modern web applications, APIs, and platforms that
                 ship fast and scale cleanly.
             </p>
-        </div>
 
-        <div class="profile-popup-actions">
-            <a href="files/Ethan Hammond Resume.pdf" download class="profile-popup-btn primary">
-                ⬇️ Download CV
-            </a>
-        
-            <button type="button" class="profile-popup-btn secondary" id="open-about-btn">
-                👤 Open About Me
-            </button>
+            <div class="profile-popup-actions">
+                <a href="files/Ethan Hammond Resume.pdf" download class="profile-popup-btn primary">
+                    ⬇️ Download CV
+                </a>
+            
+                <button type="button" class="profile-popup-btn secondary" id="open-about-btn">
+                    👤 Open About Me
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Desktop Environment -->
     <div id="desktop" class="desktop">
         <!-- Desktop Icons -->
-
-        <!-- Desktop Welcome Popup -->
-        <div id="profile-popup" class="profile-popup hidden">
-            <div class="profile-popup-overlay"></div>
-        
-            <div class="profile-popup-window">
-                <button class="profile-popup-close">×</button>
-        
-                <img src="files/profile.png" alt="Profile" class="profile-popup-avatar">
-        
-                <h2>Hi, I’m Ethan 👋</h2>
-                <p>
-                    I’m a full-stack software developer based in Dublin, Ireland.
-                    I build modern web applications, APIs, and platforms that
-                    ship fast and scale cleanly.
-                </p>
-            </div>
-        </div>
-
         <div class="desktop-icons">
             <div class="desktop-icon" data-app="about">
                 <div class="icon-image">👤</div>
@@ -189,29 +170,88 @@
         <div class="terminal">
             <div class="terminal-header">ethan@portfolio:~$</div>
             <div class="terminal-body">
+    
+                <!-- Intro -->
                 <div class="terminal-line">
                     <span class="terminal-prompt">$</span>
                     <span class="terminal-command">cat about.txt</span>
                 </div>
                 <div class="terminal-output">
                     <p><strong>Name:</strong> Ethan Hammond</p>
-                    <p><strong>Role:</strong> Associate Software Engineer @ Optum | Fullstack Developer</p>
-                    <p><strong>Bio:</strong> Fullstack Software Engineer based in Dublin, Ireland, building healthcare and insurance platforms from UI, API, DB that improve efficiency and save millions annually.</p>
+                    <p><strong>Role:</strong> Associate Software Engineer @ Optum</p>
+                    <p><strong>Location:</strong> Dublin, Ireland (Open to relocation)</p>
+                    <p>
+                        <strong>Summary:</strong>
+                        Full-stack software engineer with experience building high-impact
+                        healthcare and insurance platforms using React, TypeScript, C#, and SQL.
+                        Delivered production systems saving millions annually through performance
+                        optimisation, automation, and strong cross-team collaboration.
+                    </p>
                 </div>
+    
+                <!-- Experience -->
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">cat experience/optum.txt</span>
+                </div>
+                <div class="terminal-output">
+                    <p><strong>Optum — Associate Software Engineer (2023–Present)</strong></p>
+                    <ul>
+                        <li>Built React + TypeScript + C#/.NET applications improving operational efficiency and reducing
+                            costs.</li>
+                        <li>Clinical Solutions project reduced coder handling time by <strong>5 minutes per
+                                document</strong>, cut load times by <strong>30%</strong>, and generated <strong>~$6M annual
+                                savings</strong>.</li>
+                        <li>OneClick platform <strong>tripled insurance claim processing efficiency</strong>.</li>
+                        <li>Optimised CPT code APIs (40% faster retrieval, 25% accuracy improvement).</li>
+                        <li>Led onboarding bootcamps, reducing new-hire ramp-up time by <strong>50%</strong>.</li>
+                    </ul>
+    
+                    <p><strong>Optum — Software Engineering Intern (Summer 2022)</strong></p>
+                    <ul>
+                        <li>Built ML-powered PACMAN system using CatBoost, XGBoost, H2O (Python backend, React frontend).
+                        </li>
+                        <li>Improved prediction accuracy by <strong>10%</strong> and increased processing efficiency by
+                            <strong>300%</strong>.</li>
+                        <li>Automated data preprocessing, reducing manual work by <strong>60%</strong>.</li>
+                    </ul>
+                </div>
+    
+                <!-- Skills -->
                 <div class="terminal-line">
                     <span class="terminal-prompt">$</span>
                     <span class="terminal-command">ls skills/</span>
                 </div>
                 <div class="terminal-output">
-                    <p>React, TypeScript, C#/.NET, SQL, Python, Docker, Git, HTML/CSS</p>
+                    <p>
+                        <strong>Core:</strong> React, TypeScript, C#/.NET, SQL, Python, HTML, CSS
+                    </p>
+                    <p>
+                        <strong>Other:</strong> Java, C, C++, Scala, Docker, Git, UNIX, Qiskit, Pandas,
+                        Streamlit, Agile
+                    </p>
                 </div>
+    
+                <!-- CV Download -->
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-command">download resume.pdf</span>
+                </div>
+                <div class="terminal-output">
+                    <a href="files/Ethan Hammond Resume.pdf" download class="terminal-download-btn">
+                        ⬇️ Download Full CV (PDF)
+                    </a>
+                </div>
+    
                 <div class="terminal-line">
                     <span class="terminal-prompt">$</span>
                     <span class="terminal-cursor">_</span>
                 </div>
+    
             </div>
         </div>
     </template>
+
 
     <template id="projects-content">
         <div class="projects-grid">

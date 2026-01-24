@@ -17,6 +17,7 @@ let themeIcon;
 let profilePopup;
 let profilePopupClose;
 let profilePopupOverlay;
+let bootFinished = false;
 
 function setupProfilePopup() {
   profilePopup = document.getElementById("profile-popup");
@@ -104,11 +105,7 @@ function setupBootScreen() {
         setTimeout(() => {
           bootScreen.remove();
 
-          // ✅ Show intro popup once
-          if (!localStorage.getItem("introShown")) {
-            openProfilePopup();
-            localStorage.setItem("introShown", "true");
-          }
+          openProfilePopup();
         }, 500);
       }
     }, 2000);
