@@ -27,6 +27,13 @@ function setupProfilePopup() {
 
   profilePopupClose.addEventListener("click", closeProfilePopup);
   profilePopupOverlay.addEventListener("click", closeProfilePopup);
+
+  const openAboutBtn = document.getElementById("open-about-btn");
+
+  openAboutBtn?.addEventListener("click", () => {
+    closeProfilePopup();
+    openWindow("about");
+  });
 }
 
 function openProfilePopup() {
