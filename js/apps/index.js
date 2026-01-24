@@ -1,5 +1,6 @@
 import { aboutApp } from "./about.js";
 import { projectsApp } from "./projects.js";
+import { achievementsApp } from "./achievements.js";
 import { skillsApp } from "./skills.js";
 import { visualiserApp } from "./visualiser.js";
 import { contactApp } from "./contact.js";
@@ -15,6 +16,7 @@ import { wordleGameApp } from "./wordleGame.js";
 const apps = [
   aboutApp,
   projectsApp,
+  achievementsApp,
   skillsApp,
   visualiserApp,
   contactApp,
@@ -33,5 +35,6 @@ export const appConfigs = apps.reduce((configs, app) => {
     title: app.title,
     template: app.templateId,
   };
+
   return configs;
 }, {});

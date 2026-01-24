@@ -50,7 +50,13 @@ function setupKeyboardShortcuts() {
   document.addEventListener("keydown", (e) => {
     // Alt+1-4: Open apps
     if (e.altKey && !e.ctrlKey && !e.shiftKey) {
-      const appMap = { 1: "about", 2: "projects", 3: "skills", 4: "contact" };
+      const appMap = {
+        1: "about",
+        2: "projects",
+        3: "achievements",
+        4: "skills",
+        5: "contact",
+      };
       if (appMap[e.key]) {
         e.preventDefault();
         openWindow(appMap[e.key]);
