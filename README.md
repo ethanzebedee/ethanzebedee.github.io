@@ -147,7 +147,6 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 - Notes app and simple file explorer simulated on the client
 - More detailed achievements / experience app
 - Optional sound effects and background music
-- Download‑resume button wired to the PDF
 - In‑window README / help viewer for explaining the OS
 - Add Resume pdf to desktop
 - Add achievements app
