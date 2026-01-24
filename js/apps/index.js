@@ -12,6 +12,10 @@ import { pongGameApp } from "./pongGame.js";
 import { chessGameApp } from "./chessGame.js";
 import { sudokuGameApp } from "./sudokuGame.js";
 import { wordleGameApp } from "./wordleGame.js";
+import { notesApp } from "./notes.js";
+import { fileExplorerApp } from "./fileExplorer.js";
+import { algorithmVisualiserApp } from "./algorithmVisualiser.js";
+import { paintApp } from "./paint.js";
 
 const apps = [
   aboutApp,
@@ -27,6 +31,10 @@ const apps = [
   chessGameApp,
   sudokuGameApp,
   wordleGameApp,
+  notesApp,
+  fileExplorerApp,
+  algorithmVisualiserApp,
+  paintApp,
   settingsApp,
 ];
 

@@ -201,6 +201,91 @@ body {
     }
 }
 
+/* Clippy Assistant */
+#clippy {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.clippy-body {
+    font-size: 3rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.2s ease;
+    animation: clippy-bounce 2s infinite;
+}
+
+.clippy-body:hover {
+    transform: scale(1.1);
+}
+
+@keyframes clippy-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.clippy-speech {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 10px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    min-width: 200px;
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.clippy-speech::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+}
+
+.clippy-speech.hidden {
+    display: none;
+}
+
+.clippy-speech-content {
+    color: var(--text-color);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.clippy-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.clippy-close:hover {
+    background: #dc2626;
+}
+
 .terminal-download-btn {
     display: inline-block;
     margin-top: 8px;

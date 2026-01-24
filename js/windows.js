@@ -13,6 +13,10 @@ import { setupPongGameWindow } from "./games/pong.js";
 import { setupChessGameWindow } from "./games/chess.js";
 import { setupSudokuGameWindow } from "./games/sudoku.js";
 import { setupWordleGameWindow } from "./games/wordle.js";
+import { setupNotesWindow } from "./notesWindow.js";
+import { setupFileExplorerWindow } from "./fileExplorerWindow.js";
+import { setupAlgorithmVisualiserWindow } from "./algorithmVisualiserWindow.js";
+import { setupPaintWindow } from "./paintWindow.js";
 
 let currentThemeLabelEl = null;
 let themeIconEl = null;
@@ -132,6 +136,26 @@ export function openWindow(appName) {
   }
   if (appName === "wordle-game") {
     setTimeout(() => setupWordleGameWindow(windowElement), 50);
+  }
+
+  // Setup notes window
+  if (appName === "notes") {
+    setTimeout(() => setupNotesWindow(windowElement), 50);
+  }
+
+  // Setup file explorer window
+  if (appName === "file-explorer") {
+    setTimeout(() => setupFileExplorerWindow(windowElement), 50);
+  }
+
+  // Setup algorithm visualiser window
+  if (appName === "algorithm-visualiser") {
+    setTimeout(() => setupAlgorithmVisualiserWindow(windowElement), 50);
+  }
+
+  // Setup paint window
+  if (appName === "paint") {
+    setTimeout(() => setupPaintWindow(windowElement), 50);
   }
 }
 

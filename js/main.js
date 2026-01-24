@@ -7,6 +7,7 @@ import {
   toggleMaximize,
 } from "./windows.js";
 import { setupDesktopIcons } from "./desktopIcons.js";
+import { initClippy } from "./clippy.js";
 
 let startButton;
 let startMenu;
@@ -233,6 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupKeyboardShortcuts();
   setupBootScreen();
+
+  // Initialize Clippy assistant
+  initClippy();
 
   console.log("DOMContentLoaded complete");
 });

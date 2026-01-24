@@ -88,6 +88,22 @@
                 <div class="icon-image">🎮</div>
                 <span class="icon-label">Games</span>
             </div>
+            <div class="desktop-icon" data-app="notes">
+                <div class="icon-image">📝</div>
+                <span class="icon-label">Notes</span>
+            </div>
+            <div class="desktop-icon" data-app="file-explorer">
+                <div class="icon-image">📂</div>
+                <span class="icon-label">File Explorer</span>
+            </div>
+            <div class="desktop-icon" data-app="algorithm-visualiser">
+                <div class="icon-image">📊</div>
+                <span class="icon-label">Algorithms</span>
+            </div>
+            <div class="desktop-icon" data-app="paint">
+                <div class="icon-image">🎨</div>
+                <span class="icon-label">Paint</span>
+            </div>
             <div class="desktop-icon" data-app="settings">
                 <div class="icon-image">⚙️</div>
                 <span class="icon-label">Settings</span>
@@ -151,6 +167,22 @@
                 <div class="start-menu-item" data-app="games">
                     <span class="start-menu-icon">🎮</span>
                     <span>Games</span>
+                </div>
+                <div class="start-menu-item" data-app="notes">
+                    <span class="start-menu-icon">📝</span>
+                    <span>Notes</span>
+                </div>
+                <div class="start-menu-item" data-app="file-explorer">
+                    <span class="start-menu-icon">📂</span>
+                    <span>File Explorer</span>
+                </div>
+                <div class="start-menu-item" data-app="algorithm-visualiser">
+                    <span class="start-menu-icon">📊</span>
+                    <span>Algorithm Visualiser</span>
+                </div>
+                <div class="start-menu-item" data-app="paint">
+                    <span class="start-menu-icon">🎨</span>
+                    <span>MS Paint</span>
                 </div>
                 <div class="start-menu-item" data-app="settings">
                     <span class="start-menu-icon">⚙️</span>
@@ -602,6 +634,75 @@
                 <input class="wordle-guess-input" type="text" maxlength="5" placeholder="Enter guess" />
                 <button class="wordle-guess-btn" type="button">Guess</button>
             </div>
+        </div>
+    </template>
+
+    <template id="notes-content">
+        <div class="notes-container">
+            <div class="notes-header">
+                <h3>📝 Notes</h3>
+                <button class="new-note-btn" type="button">+ New Note</button>
+            </div>
+            <div class="notes-list"></div>
+        </div>
+    </template>
+
+    <template id="file-explorer-content">
+        <div class="file-explorer-container">
+            <div class="file-explorer-header">
+                <div class="file-path">Home</div>
+            </div>
+            <div class="file-explorer-body">
+                <div class="file-tree"></div>
+                <div class="file-viewer"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="algorithm-visualiser-content">
+        <div class="algorithm-visualiser-container">
+            <div class="algorithm-visualiser-header">
+                <label>
+                    Algorithm:
+                    <select class="algorithm-select">
+                        <option value="">Select an algorithm...</option>
+                    </select>
+                </label>
+                <div class="algorithm-controls">
+                    <button class="algorithm-play-btn" type="button">▶️ Play</button>
+                    <button class="algorithm-reset-btn" type="button">🔄 Reset</button>
+                    <label>
+                        <input type="range" class="algorithm-speed-slider" min="10" max="200" value="50">
+                        <span class="algorithm-speed-label">Speed: 50ms</span>
+                    </label>
+                </div>
+            </div>
+            <canvas class="algorithm-canvas" width="800" height="400"></canvas>
+        </div>
+    </template>
+
+    <template id="paint-content">
+        <div class="paint-container">
+            <div class="paint-toolbar">
+                <label>
+                    Tool:
+                    <select class="paint-tool-select">
+                        <option value="brush">🖌️ Brush</option>
+                        <option value="eraser">🧹 Eraser</option>
+                    </select>
+                </label>
+                <label>
+                    Color:
+                    <input type="color" class="paint-color-picker" value="#000000">
+                </label>
+                <label>
+                    Size:
+                    <input type="range" class="paint-brush-size" min="1" max="50" value="5">
+                </label>
+                <button class="paint-clear-btn" type="button">🗑️ Clear</button>
+                <button class="paint-save-btn" type="button">💾 Save</button>
+            </div>
+            <canvas class="paint-canvas"></canvas>
         </div>
     </template>
 
