@@ -25,7 +25,14 @@ export function initWindowManager({ currentThemeLabel, themeIcon }) {
 
 // Window management functions
 export function openWindow(appName) {
-  console.log("openWindow called for:", appName);
+  if (!appName) return;
+  appName = appName.trim();
+  console.log(`openWindow called for: "${appName}"`);
+
+  if (appName === "resume") {
+    window.open("files/Ethan Hammond Resume.pdf", "_blank");
+    return;
+  }
 
   // If window already exists, focus it
   if (state.windows[appName]) {
