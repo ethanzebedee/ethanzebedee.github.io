@@ -155,7 +155,6 @@ Some planned or potential enhancements (all constrained to what’s possible on 
 - Add Download resume function within about me
 - Add Clippy
 - Add video player function
-- Add a browser?
 
 ---
 
