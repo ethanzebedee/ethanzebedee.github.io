@@ -1,10 +1,30 @@
-/* Reset and Base Styles */
+/* ============================================================================
+   BASE.CSS - Foundation Styles for EthanOS Portfolio
+   ============================================================================
+   
+   This file contains the core foundation styles:
+   - CSS Reset for consistent cross-browser rendering
+   - CSS Custom Properties (variables) for theming
+   - Boot screen animation styles
+   - Desktop and icon layout
+   - Taskbar structure
+   - Start menu layout
+   - Day mode theme overrides
+   
+   The CSS variables defined in :root are used throughout all stylesheets
+   to maintain a consistent color scheme and theming system.
+   ============================================================================ */
+
+/* Reset - Remove default browser margins/padding and set consistent box-sizing */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding and border in element's total width/height */
 }
 
+/* CSS Custom Properties (Variables) - Global Theme System
+   These variables are referenced throughout the application with var(--variable-name)
+   and can be overridden by theme classes (day-mode, win95-theme) */
 :root {
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
@@ -60,18 +80,22 @@ body {
 }
 
 .boot-logo {
-    width: 80px;
-    height: 80px;
-    background: var(--primary-color);
-    color: white;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
-    border-radius: 16px;
+    border-radius: 50%;
     margin: 0 auto 1.5rem;
+    overflow: hidden;
     box-shadow: 0 8px 32px var(--shadow);
+    background: var(--primary-color);
+}
+
+.boot-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .boot-title {
