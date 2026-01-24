@@ -191,22 +191,6 @@ When customising, you generally:
 
 ---
 
-## 🚧 Future Enhancements
-
-Potential additions (all constrained to static hosting):
-
-- Video player app
-- Music player app
-- Certifications showcase app
-- Promises / async‑await visualiser
-- Optional sound effects and background music
-- Window snapping (like Windows 11)
-- Virtual desktops
-- Right-click context menus
-- Start menu search functionality
-
----
-
 ## 👀 For Recruiters
 
 A quick guide to the most relevant parts of this portfolio:
