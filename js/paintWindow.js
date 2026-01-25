@@ -66,27 +66,24 @@ export function setupPaintWindow(windowElement) {
     if (!isDrawing) return;
 
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
 
     ctx.lineWidth = currentSize;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
-    if (currentTool === "brush") {
-      ctx.globalCompositeOperation = "source-over";
-      ctx.strokeStyle = currentColor;
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-    } else if (currentTool === "eraser") {
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-    }
+    ctx.globalCompositeOperation =
+      currentTool === "eraser" ? "destination-out" : "source-over";
+    ctx.strokeStyle = currentColor;
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
 
     lastX = x;
     lastY = y;
