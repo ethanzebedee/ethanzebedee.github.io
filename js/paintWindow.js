@@ -14,74 +14,87 @@ export function setupPaintWindow(windowElement) {
   let lastX = 0;
   let lastY = 0;
 
-  // Set canvas size
-  canvas.width = 800;
-  canvas.height = 600;
+  /* -----------------------------
+     Canvas sizing (CSS-safe)
+  ------------------------------ */
+  function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
 
-  // Fill white background
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
 
-  // Color picker
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Fill white background
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, rect.width, rect.height);
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  /* -----------------------------
+     UI controls
+  ------------------------------ */
   colorPicker.addEventListener("input", (e) => {
     currentColor = e.target.value;
   });
 
-  // Brush size
   brushSize.addEventListener("input", (e) => {
-    currentSize = parseInt(e.target.value);
+    currentSize = parseInt(e.target.value, 10);
   });
 
-  // Tool selection
   toolSelect.addEventListener("change", (e) => {
     currentTool = e.target.value;
-    canvas.style.cursor = currentTool === "eraser" ? "grab" : "crosshair";
+    canvas.style.cursor = currentTool === "eraser" ? "cell" : "crosshair";
   });
 
-  // Clear canvas
   clearBtn.addEventListener("click", () => {
     if (confirm("Clear the entire canvas?")) {
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
       ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, rect.width, rect.height);
     }
   });
 
-  // Save canvas
   saveBtn.addEventListener("click", () => {
     const link = document.createElement("a");
     link.download = `paint-${Date.now()}.png`;
-    link.href = canvas.toDataURL();
+    link.href = canvas.toDataURL("image/png");
     link.click();
   });
 
-  // Drawing functions
+  /* -----------------------------
+     Drawing logic
+  ------------------------------ */
+  function getCanvasPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  }
+
   function startDrawing(e) {
     isDrawing = true;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
+    const { x, y } = getCanvasPos(e);
+    lastX = x;
+    lastY = y;
   }
 
   function draw(e) {
     if (!isDrawing) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
+    const { x, y } = getCanvasPos(e);
 
     ctx.lineWidth = currentSize;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-
+    ctx.strokeStyle = currentColor;
     ctx.globalCompositeOperation =
       currentTool === "eraser" ? "destination-out" : "source-over";
-    ctx.strokeStyle = currentColor;
 
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
@@ -96,36 +109,28 @@ export function setupPaintWindow(windowElement) {
     isDrawing = false;
   }
 
-  // Mouse events
+  /* -----------------------------
+     Mouse events
+  ------------------------------ */
   canvas.addEventListener("mousedown", startDrawing);
   canvas.addEventListener("mousemove", draw);
   canvas.addEventListener("mouseup", stopDrawing);
-  canvas.addEventListener("mouseout", stopDrawing);
+  canvas.addEventListener("mouseleave", stopDrawing);
 
-  // Touch events for mobile
+  /* -----------------------------
+     Touch events
+  ------------------------------ */
   canvas.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent("mousedown", {
-      clientX: touch.clientX,
-      clientY: touch.clientY,
-    });
-    canvas.dispatchEvent(mouseEvent);
+    const t = e.touches[0];
+    startDrawing({ clientX: t.clientX, clientY: t.clientY });
   });
 
   canvas.addEventListener("touchmove", (e) => {
     e.preventDefault();
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent("mousemove", {
-      clientX: touch.clientX,
-      clientY: touch.clientY,
-    });
-    canvas.dispatchEvent(mouseEvent);
+    const t = e.touches[0];
+    draw({ clientX: t.clientX, clientY: t.clientY });
   });
 
-  canvas.addEventListener("touchend", (e) => {
-    e.preventDefault();
-    const mouseEvent = new MouseEvent("mouseup", {});
-    canvas.dispatchEvent(mouseEvent);
-  });
+  canvas.addEventListener("touchend", stopDrawing);
 }
