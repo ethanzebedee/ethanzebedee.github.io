@@ -3,13 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ethan Hammond - Portfolio">
+    <meta name="description" content="Ethan Hammond — Full-stack software engineer based in Dublin, Ireland. React, TypeScript, C#/.NET, SQL. Associate Software Engineer at Optum.">
+    <meta name="keywords" content="Ethan Hammond, software engineer, full-stack developer, React, TypeScript, C#, .NET, SQL, Dublin, Ireland, portfolio">
+    <meta name="author" content="Ethan Hammond">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ethanzebedee.github.io">
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ethanzebedee.github.io">
+    <meta property="og:title" content="Ethan Hammond | Software Engineer Portfolio">
+    <meta property="og:description" content="Full-stack software engineer based in Dublin. Builds healthcare platforms, APIs, and web applications with React, TypeScript, C# and SQL.">
+    <meta property="og:image" content="https://ethanzebedee.github.io/files/profile.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ethan Hammond | Software Engineer Portfolio">
+    <meta name="twitter:description" content="Full-stack software engineer based in Dublin. React, TypeScript, C#/.NET. Associate Software Engineer at Optum.">
+    <meta name="twitter:image" content="https://ethanzebedee.github.io/files/profile.png">
+
     <title>Ethan Hammond | Portfolio</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ethan Hammond",
+      "jobTitle": "Associate Software Engineer",
+      "worksFor": { "@type": "Organization", "name": "Optum" },
+      "url": "https://ethanzebedee.github.io",
+      "email": "ethan@hammond.ie",
+      "address": { "@type": "PostalAddress", "addressLocality": "Dublin", "addressCountry": "IE" },
+      "sameAs": [
+        "https://github.com/ethanzebedee",
+        "https://www.linkedin.com/in/ethanzebedee"
+      ],
+      "knowsAbout": ["React", "TypeScript", "C#", ".NET", "SQL", "Python", "Machine Learning"]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/windows.css">
     <link rel="stylesheet" href="css/apps.css">
 </head>
 <body>
+    <!-- Mobile Layout - shown on small screens instead of the desktop OS -->
+    <div id="mobile-layout" class="mobile-layout">
+        <div class="mobile-card">
+            <img src="files/profile.png" alt="Ethan Hammond" class="mobile-avatar">
+            <h1>Ethan Hammond</h1>
+            <p class="mobile-role">Associate Software Engineer @ Optum</p>
+            <p class="mobile-location">📍 Dublin, Ireland</p>
+            <p class="mobile-bio">
+                Full-stack software engineer building healthcare platforms and
+                web applications with React, TypeScript, C#/.NET and SQL.
+            </p>
+            <div class="mobile-links">
+                <a href="files/Ethan Hammond Resume.pdf" download class="mobile-btn primary">⬇️ Download CV</a>
+                <a href="https://github.com/ethanzebedee" target="_blank" class="mobile-btn">GitHub</a>
+                <a href="https://www.linkedin.com/in/ethanzebedee" target="_blank" class="mobile-btn">LinkedIn</a>
+                <a href="mailto:ethan@hammond.ie" class="mobile-btn">✉️ Email</a>
+            </div>
+            <p class="mobile-desktop-note">🖥️ Visit on desktop for the full interactive experience</p>
+        </div>
+    </div>
+
     <!-- Boot Screen - Shows on initial load -->
     <div id="boot-screen" class="boot-screen">
         <div class="boot-content">
@@ -21,6 +80,7 @@
                 <div class="boot-bar"></div>
             </div>
             <p class="boot-text">Loading portfolio...</p>
+            <p class="boot-skip">Click anywhere to skip</p>
         </div>
     </div>
 
@@ -66,7 +126,7 @@
             </div>
             <div class="desktop-icon" data-app="achievements">
                 <div class="icon-image">🏆</div>
-                <span class="icon-label">achievements</span>
+                <span class="icon-label">Achievements</span>
             </div>
             <div class="desktop-icon" data-app="skills">
                 <div class="icon-image">⚡</div>
@@ -145,8 +205,8 @@
                     <span>Projects</span>
                 </div>
                 <div class="start-menu-item" data-app="achievements">
-                    <div class="icon-image">🏆</div>
-                    <span>achievements</span>
+                    <span class="start-menu-icon">🏆</span>
+                    <span>Achievements</span>
                 </div>
                 <div class="start-menu-item" data-app="skills">
                     <span class="start-menu-icon">⚡</span>
@@ -547,7 +607,7 @@
         <div class="contact-container">
             <div class="contact-intro">
                 <h3>Let's Connect</h3>
-                <p>Associate Software Engineer at Optum, focused on fullstack web development, healthcare platforms and AI 37driven tools. Open to new roles and collaborations.</p>
+                <p>Associate Software Engineer at Optum, focused on fullstack web development, healthcare platforms and AI-driven tools. Open to new roles and collaborations.</p>
             </div>
             <div class="contact-methods">
                 <a href="https://github.com/ethanzebedee" target="_blank" class="contact-card">
@@ -813,12 +873,59 @@
                 <div class="setting-info">
                     <p><strong>EthanOS</strong> Version 1.0.0</p>
                     <p>Built with vanilla HTML, CSS, and JavaScript</p>
-                    <p>9 2025 Ethan Hammond</p>
+                    <p>&copy; 2025 Ethan Hammond</p>
                 </div>
             </div>
         </div>
     </template>
 
     <script type="module" src="js/main.js?v=2"></script>
+
+    <!-- Noscript fallback: makes key content crawlable by search engines -->
+    <noscript>
+        <style>
+            body > *:not(noscript) { display: none !important; }
+            .noscript-page { display: block !important; }
+        </style>
+        <div class="noscript-page" style="max-width:700px;margin:40px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1f2937">
+            <h1>Ethan Hammond &mdash; Software Engineer</h1>
+            <p><strong>Role:</strong> Associate Software Engineer @ Optum &bull; Dublin, Ireland</p>
+            <p>Full-stack software engineer with experience building high-impact healthcare and insurance platforms using React, TypeScript, C#, and SQL.</p>
+
+            <h2>Experience</h2>
+            <h3>Optum &mdash; Associate Software Engineer (2023&ndash;Present)</h3>
+            <ul>
+                <li>Clinical Solutions: reduced coder handling time by 5 min/document, cut load times 30%, ~$6M annual savings.</li>
+                <li>OneClick: tripled insurance claim processing efficiency.</li>
+                <li>CPT code APIs: 40% faster retrieval, 25% accuracy improvement.</li>
+                <li>Led onboarding bootcamps reducing new-hire ramp-up by 50%.</li>
+            </ul>
+            <h3>Optum &mdash; Software Engineering Intern (Summer 2022)</h3>
+            <ul>
+                <li>Built ML-powered PACMAN system (CatBoost, XGBoost, H2O) &mdash; 10% accuracy gain, 300% processing efficiency.</li>
+                <li>Automated data preprocessing, reducing manual work by 60%.</li>
+            </ul>
+
+            <h2>Skills</h2>
+            <p><strong>Production:</strong> React, TypeScript, C#/.NET, SQL, HTML, CSS, REST APIs</p>
+            <p><strong>ML/Data:</strong> Python, CatBoost, XGBoost, H2O, Pandas, Jupyter</p>
+            <p><strong>Other:</strong> Java, C, C++, Scala, Docker, Git, UNIX, Agile</p>
+
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Final Year Project &mdash; Quantum Classifiers:</strong> comparative analysis of QSVMs and variational quantum classifiers using Qiskit.</li>
+                <li><strong>Algorithm Visualiser:</strong> interactive visualiser for 30+ sorting and search algorithms.</li>
+                <li><strong>Portfolio Site (EthanOS):</strong> this site &mdash; built as a fully interactive desktop OS in vanilla HTML/CSS/JS.</li>
+            </ul>
+
+            <h2>Contact</h2>
+            <ul>
+                <li>Email: <a href="mailto:ethan@hammond.ie">ethan@hammond.ie</a></li>
+                <li>GitHub: <a href="https://github.com/ethanzebedee">github.com/ethanzebedee</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/ethanzebedee">linkedin.com/in/ethanzebedee</a></li>
+            </ul>
+            <p><em>JavaScript is required for the full interactive portfolio experience.</em></p>
+        </div>
+    </noscript>
 </body>
 </html>

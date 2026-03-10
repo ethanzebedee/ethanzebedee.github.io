@@ -99,23 +99,24 @@ function setupKeyboardShortcuts() {
 
 // Boot screen animation
 function setupBootScreen() {
+  function dismissBootScreen() {
+    const bootScreen = document.getElementById("boot-screen");
+    if (!bootScreen || bootFinished) return;
+    bootFinished = true;
+    bootScreen.classList.add("hidden");
+    setTimeout(() => {
+      bootScreen.remove();
+      openProfilePopup();
+    }, 500);
+  }
+
   window.addEventListener("load", () => {
     console.log("Window load event fired");
-
-    setTimeout(() => {
-      const bootScreen = document.getElementById("boot-screen");
-      if (bootScreen) {
-        console.log("Hiding boot screen");
-        bootScreen.classList.add("hidden");
-
-        // Remove from DOM after animation
-        setTimeout(() => {
-          bootScreen.remove();
-
-          openProfilePopup();
-        }, 500);
-      }
-    }, 2000);
+    const bootScreen = document.getElementById("boot-screen");
+    if (bootScreen) {
+      bootScreen.addEventListener("click", dismissBootScreen);
+    }
+    setTimeout(dismissBootScreen, 2000);
   });
 }
 
