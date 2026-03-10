@@ -131,6 +131,14 @@ body {
     font-size: 0.875rem;
 }
 
+.boot-skip {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+}
+
 /* Desktop */
 .desktop {
     width: 100vw;
@@ -477,5 +485,121 @@ body {
 
 .profile-popup-btn.secondary:hover {
     transform: translateY(-1px);
+}
+
+/* ============================================================================
+   Mobile Layout
+   On screens narrower than 768px the full desktop OS is replaced with a
+   simple, scrollable landing page.
+   ============================================================================ */
+
+/* Hide mobile layout on desktop */
+.mobile-layout {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Show mobile layout, hide everything else */
+    .mobile-layout {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px 16px 40px;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        overflow-y: auto;
+    }
+
+    /* Hide desktop OS elements */
+    #boot-screen,
+    #profile-popup,
+    #desktop {
+        display: none !important;
+    }
+
+    /* Mobile card */
+    .mobile-card {
+        width: 100%;
+        max-width: 420px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .mobile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .mobile-card h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 4px;
+    }
+
+    .mobile-role {
+        font-size: 0.95rem;
+        color: #2563eb;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    .mobile-location {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-bottom: 16px;
+    }
+
+    .mobile-bio {
+        font-size: 0.9rem;
+        color: #374151;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    .mobile-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .mobile-btn {
+        display: block;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        background: #f1f5f9;
+        color: #1f2937;
+        transition: background 0.15s ease;
+    }
+
+    .mobile-btn:hover {
+        background: #e2e8f0;
+    }
+
+    .mobile-btn.primary {
+        background: #2563eb;
+        color: white;
+    }
+
+    .mobile-btn.primary:hover {
+        background: #1d4ed8;
+    }
+
+    .mobile-desktop-note {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        line-height: 1.5;
+    }
 }
 
