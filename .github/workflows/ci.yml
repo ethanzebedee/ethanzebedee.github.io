@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [main, develop]
+    branches: [ main, develop ]
   pull_request:
-    branches: [main, develop]
+    branches: [ main, develop ]
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -14,21 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: "npm"
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: 'npm'
 
-      - name: Install dependencies
-        run: |
-          npm init -y
-          npm install --save-dev html-validate stylelint eslint
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install --save-dev html-validate stylelint eslint
 
-      - name: Validate HTML
+    - name: Validate HTML
       run: npx html-validate index.html || echo "HTML validation completed with warnings"
 
     - name: Validate CSS
@@ -36,12 +36,13 @@ jobs:
 
     - name: Validate JavaScript
       run: npx eslint js/*.js || echo "JavaScript validation completed with warnings"
-      - name: Basic HTML syntax check
-        run: |
-          echo "Checking for common HTML issues..."
-          # Check for unclosed tags (basic check)
-          if grep -q "<[^>]*$" index.html; then
-            echo "Warning: Found unclosed HTML tags"
-          else
-            echo "HTML syntax looks good"
-          fi
+
+    - name: Basic HTML syntax check
+      run: |
+        echo "Checking for common HTML issues..."
+        # Check for unclosed tags (basic check)
+        if grep -q "<[^>]*$" index.html; then
+          echo "Warning: Found unclosed HTML tags"
+        else
+          echo "HTML syntax looks good"
+        fi
