@@ -139,6 +139,47 @@ body {
     letter-spacing: 0.05em;
 }
 
+.boot-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.boot-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.boot-btn.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.boot-btn.primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+
+.boot-btn.secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.boot-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
 /* Desktop */
 .desktop {
     width: 100vw;
