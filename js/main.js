@@ -122,8 +122,8 @@ function setupBootScreen() {
     bootScreen.classList.add("hidden");
 
     // Hide default layout elements
-    if (desktop) desktop.style.display = "none";
-    if (mobileLayout) mobileLayout.style.display = "none";
+    if (desktop) desktop.classList.add("hidden");
+    if (mobileLayout) mobileLayout.classList.add("hidden");
 
     // Show traditional view
     traditionalView.classList.remove("hidden");
@@ -161,8 +161,8 @@ function setupBootScreen() {
       }
     });
 
-    // Auto-dismiss after 2 seconds
-    setTimeout(dismissBootScreen, 2000);
+    // Auto-open Quick View after 2 seconds by default
+    setTimeout(showTraditionalView, 2000);
   });
 }
 
@@ -177,8 +177,8 @@ function setupTraditionalViewClosing() {
     const mobileLayout = document.getElementById("mobile-layout");
 
     if (traditionalView) traditionalView.classList.add("hidden");
-    if (desktop) desktop.style.display = "block";
-    if (mobileLayout) mobileLayout.style.display = "block";
+    if (desktop) desktop.classList.remove("hidden");
+    if (mobileLayout) mobileLayout.classList.remove("hidden");
 
     // Re-open the profile popup
     openProfilePopup();

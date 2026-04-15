@@ -29,13 +29,14 @@ jobs:
           npm install --save-dev html-validate stylelint eslint
 
       - name: Validate HTML
-      run: npx html-validate index.html || echo "HTML validation completed with warnings"
+        run: npx html-validate index.html || echo "HTML validation completed with warnings"
 
-    - name: Validate CSS
-      run: npx stylelint css/*.css || echo "CSS validation completed with warnings"
+      - name: Validate CSS
+        run: npx stylelint css/*.css || echo "CSS validation completed with warnings"
 
-    - name: Validate JavaScript
-      run: npx eslint js/*.js || echo "JavaScript validation completed with warnings"
+      - name: Validate JavaScript
+        run: npx eslint js/*.js || echo "JavaScript validation completed with warnings"
+
       - name: Basic HTML syntax check
         run: |
           echo "Checking for common HTML issues..."
