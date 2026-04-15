@@ -161,8 +161,8 @@ function setupBootScreen() {
       }
     });
 
-    // Auto-dismiss after 2 seconds
-    setTimeout(dismissBootScreen, 2000);
+    // Auto-open Quick View after 2 seconds by default
+    setTimeout(showTraditionalView, 2000);
   });
 }
 
