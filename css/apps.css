@@ -77,6 +77,25 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.project-section-header {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.project-section-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.project-item-academic {
+    opacity: 0.85;
+}
+
 .project-header {
     display: flex;
     justify-content: space-between;
@@ -1248,4 +1267,505 @@
     height: 600px;
     margin: 0 auto;
     touch-action: none;
+}
+
+/* ============================================================================
+   TRADITIONAL VIEW - Clean, Single-Page Portfolio
+   ============================================================================ */
+
+.traditional-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9998;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.traditional-view.hidden {
+    display: none;
+}
+
+/* Header / Navigation */
+.trad-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.trad-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.trad-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.trad-nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    flex: 1;
+    justify-content: center;
+}
+
+.trad-nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.trad-nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.trad-close-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.trad-close-btn:hover {
+    background: var(--secondary-color);
+}
+
+/* Main Content */
+.trad-main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 48px 24px;
+}
+
+.trad-section {
+    margin-bottom: 64px;
+}
+
+.trad-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 16px;
+}
+
+/* Hero Section */
+.trad-hero {
+    margin-bottom: 80px;
+}
+
+.trad-hero-content {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.trad-hero-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    flex-shrink: 0;
+}
+
+.trad-hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.trad-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.trad-location {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+.trad-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.trad-link-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background: #f3f4f6;
+    color: var(--text-color);
+    border: 1px solid #e5e7eb;
+}
+
+.trad-link-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.trad-link-btn.primary {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.trad-link-btn.primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* About Section */
+.trad-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+/* Experience Section */
+.trad-experience {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.trad-job {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.trad-job-header {
+    margin-bottom: 16px;
+}
+
+.trad-job-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.trad-company {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.trad-duration {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.trad-metrics {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.trad-metrics li {
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.trad-stack {
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Projects Section */
+.trad-projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.trad-project {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+.trad-project:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-left-color: var(--secondary-color);
+}
+
+.trad-project h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.trad-project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.trad-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.trad-project p {
+    margin-bottom: 12px;
+}
+
+.trad-project-notes {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.trad-project-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.trad-project-links a {
+    padding: 6px 12px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.trad-project-links a:hover {
+    background: var(--secondary-color);
+}
+
+.trad-project-links button {
+    padding: 6px 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.trad-project-links button:hover {
+    background: var(--secondary-color);
+}
+
+.trad-project-subheader {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 32px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 8px;
+    grid-column: 1 / -1;
+}
+
+.trad-project-academic {
+    opacity: 0.85;
+    border-left-color: #9ca3af;
+}
+
+/* Skills Section */
+.trad-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.trad-skill-category {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.trad-skill-category h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.trad-skill-category p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Certifications Section */
+.trad-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.trad-list li {
+    padding: 12px 16px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-color);
+    color: var(--text-color);
+}
+
+.trad-cert-meta {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Education Section */
+.trad-education {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.trad-edu-item {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    border-top: 3px solid var(--primary-color);
+}
+
+.trad-edu-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.trad-edu-status,
+.trad-edu-meta {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.trad-footer {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 24px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 64px;
+}
+
+.trad-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.trad-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .trad-nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .trad-nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .trad-hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trad-hero-avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .trad-hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .trad-title {
+        font-size: 1.25rem;
+    }
+
+    .trad-main {
+        padding: 24px 16px;
+    }
+
+    .trad-section {
+        margin-bottom: 48px;
+    }
+
+    .trad-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .trad-skills,
+    .trad-list,
+    .trad-education {
+        grid-template-columns: 1fr;
+    }
+
+    .trad-links {
+        justify-content: center;
+    }
 }
