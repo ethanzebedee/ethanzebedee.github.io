@@ -2,6 +2,8 @@
 
 Personal portfolio website presented as a mini desktop operating system and hosted on GitHub Pages.
 
+The site now opens into the Quick View traditional portfolio first, with a **Back to EthanOS** button available to switch back to the desktop experience.
+
 The site is fully static (HTML/CSS/JS only) and is designed around the constraints of GitHub Pages: no backend, no server‑side code, and no custom build pipeline.
 
 ## 🚀 Quick Start
@@ -12,7 +14,6 @@ This is a static site that requires **no build process**. You can open it direct
 
 1. Clone the repository
 2. From the project root, either:
-
    - Open `index.html` directly in your browser, **or**
    - Run a local server:
 
@@ -141,6 +142,7 @@ When customising, you generally:
 ## ✨ Current Features
 
 ### Core Desktop Environment
+
 - Desktop‑style UI with draggable, focusable windows
 - Boot screen with animated loading
 - Taskbar with running apps, live clock, and theme toggles
@@ -150,6 +152,7 @@ When customising, you generally:
 - Customisable desktop backgrounds (8 options)
 
 ### Applications
+
 - **About Me**: Terminal-style bio and experience
 - **Projects**: Grid of project cards with links
 - **Achievements**: Leadership and awards showcase
@@ -161,13 +164,14 @@ When customising, you generally:
 - **Algorithm Visualiser**: Interactive visualization of 30+ algorithms including:
   - **Sorting**: Bubble, Insertion, Selection, Merge, Quick Sort
   - **Search**: Linear, Binary, Jump, Interpolation, Exponential, Stalin Sort
-  - **Pathfinding**: Dijkstra's, A*, Bellman-Ford, Floyd-Warshall, Prim's MST, Kruskal's MST
+  - **Pathfinding**: Dijkstra's, A\*, Bellman-Ford, Floyd-Warshall, Prim's MST, Kruskal's MST
   - **Other**: Top K Elements, Backtracking (N-Queens), Sliding Window, Huffman Coding, Euclid's Algorithm, Union Find, Kadane's Algorithm, Floyd's Cycle Detection, KMP Pattern Matching, Quick Select, Boyer-Moore, Maze Generation
 - **MS Paint**: Canvas-based drawing application with brush, eraser, color picker, and save functionality
 - **Settings**: Theme and background customization
 - **Resume**: Direct PDF download from desktop
 
 ### Games
+
 - **Snake**: Classic snake game with arrow keys/WASD controls
 - **Minesweeper**: Grid-based puzzle with flagging
 - **Pong**: Canvas-based paddle game with AI opponent
@@ -176,6 +180,7 @@ When customising, you generally:
 - **Wordle**: Word guessing game with color-coded feedback
 
 ### Keyboard Shortcuts
+
 - Alt+1-5: Quick app launch
 - Ctrl+W: Close active window
 - Ctrl+M: Minimize active window
@@ -184,6 +189,7 @@ When customising, you generally:
 - Ctrl+Space: Toggle start menu
 
 ### Technical Features
+
 - No build process required; works out‑of‑the‑box on GitHub Pages
 - Fully responsive design
 - localStorage persistence for notes and preferences
