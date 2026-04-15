@@ -161,8 +161,8 @@ function setupBootScreen() {
       }
     });
 
-    // Auto-open Quick View after 2 seconds by default
-    setTimeout(showTraditionalView, 2000);
+    // Open Quick View immediately on load by default
+    showTraditionalView();
   });
 }
 
