@@ -1,0 +1,23 @@
+{
+  "name": "ethanos-portfolio",
+  "version": "1.0.0",
+  "description": "Ethan Hammond's portfolio website - EthanOS",
+  "main": "index.html",
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "html-validate index.html",
+    "lint:css": "stylelint css/*.css",
+    "lint:js": "eslint js/*.js",
+    "serve": "npx serve .",
+    "dev": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "html-validate": "^8.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
