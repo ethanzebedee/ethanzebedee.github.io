@@ -110,13 +110,107 @@ function setupBootScreen() {
     }, 500);
   }
 
-  window.addEventListener("load", () => {
-    console.log("Window load event fired");
+  function showTraditionalView() {
     const bootScreen = document.getElementById("boot-screen");
-    if (bootScreen) {
-      bootScreen.addEventListener("click", dismissBootScreen);
+    const traditionalView = document.getElementById("traditional-view");
+    const desktop = document.getElementById("desktop");
+    const mobileLayout = document.getElementById("mobile-layout");
+
+    if (!bootScreen || !traditionalView) return;
+
+    bootFinished = true;
+    bootScreen.classList.add("hidden");
+
+    // Hide default layout elements
+    if (desktop) desktop.style.display = "none";
+    if (mobileLayout) mobileLayout.style.display = "none";
+
+    // Show traditional view
+    traditionalView.classList.remove("hidden");
+
+    // Setup traditional view close button
+    setupTraditionalViewClosing();
+
+    // Remove boot screen after animation
+    setTimeout(() => {
+      bootScreen.remove();
+    }, 500);
+  }
+
+  window.addEventListener("load", () => {
+    const bootScreen = document.getElementById("boot-screen");
+    if (!bootScreen) return;
+
+    // Setup button event listeners
+    const quickViewBtn = document.getElementById("boot-traditional-view");
+    const ethanOSBtn = document.getElementById("boot-ethan-os");
+
+    if (quickViewBtn) {
+      quickViewBtn.addEventListener("click", showTraditionalView);
     }
+
+    if (ethanOSBtn) {
+      ethanOSBtn.addEventListener("click", dismissBootScreen);
+    }
+
+    // Click anywhere on boot screen still triggers EthanOS (backward compat)
+    bootScreen.addEventListener("click", (e) => {
+      // Only trigger if not clicking a button
+      if (e.target.tagName !== "BUTTON") {
+        dismissBootScreen();
+      }
+    });
+
+    // Auto-dismiss after 2 seconds
     setTimeout(dismissBootScreen, 2000);
+  });
+}
+
+// Setup Traditional View Controls
+function setupTraditionalViewClosing() {
+  const closeBtn = document.getElementById("trad-close-btn");
+  const footerLinks = document.querySelectorAll(".trad-footer a");
+
+  const goBackToOS = () => {
+    const traditionalView = document.getElementById("traditional-view");
+    const desktop = document.getElementById("desktop");
+    const mobileLayout = document.getElementById("mobile-layout");
+
+    if (traditionalView) traditionalView.classList.add("hidden");
+    if (desktop) desktop.style.display = "block";
+    if (mobileLayout) mobileLayout.style.display = "block";
+
+    // Re-open the profile popup
+    openProfilePopup();
+  };
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", goBackToOS);
+  }
+
+  // Also setup footer links
+  footerLinks.forEach((link) => {
+    if (link.textContent.toLowerCase().includes("back")) {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        goBackToOS();
+      });
+    }
+  });
+
+  // Setup smooth scrolling for nav links
+  const navLinks = document.querySelectorAll(".trad-nav-links a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
   });
 }
 
